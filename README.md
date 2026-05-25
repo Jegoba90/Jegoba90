@@ -88,5 +88,5 @@ Plataforma de análisis de criptomonedas diseñada bajo el principio de *"Suprem
 ## 📫 Conectemos
 
 *   📧 Escríbeme a: jegoba90@gmail.com o contacto@cryptocapi.com
-*   💼 Hablemos en LinkedIn: **[Jesús González](https://linkedin.com/in/tu-usuario-linkedin)**
+*   💼 Hablemos en LinkedIn: **[Jesús González](https://www.linkedin.com/in/jegoba90/)**
 *   ⚡ *"El código de calidad es aquel que es predecible, autolimitado ante el caos y elegante ante el cambio."*
