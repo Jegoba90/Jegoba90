@@ -109,4 +109,4 @@
 
     *   📧 Escríbeme a: **tu-correo@email.com**
     *   💼 Hablemos en LinkedIn: **[Jesús González](https://linkedin.com/in/tu-usuario-linkedin)**
-    *   ⚡ *"El código de calidad es aquel que es predecible, autolimitado ante el caos y elegante ante el cambio."*
+    *   ⚡ *"El código de calidad es aquel que es predecible, autolimitado ante el caos y elegante ante el cambio."
