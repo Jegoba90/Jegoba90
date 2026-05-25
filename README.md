@@ -1,7 +1,7 @@
 # ¡Hola! Soy Jesús González (Jegoba90) 👋
 
 <p align="center">
-  <strong>Fullstack Software Architect & Engineer | Apasionado del Código Limpio y la Verdad Matemática 🏛️</strong>
+  <strong>Fullstack Software Architect & Engineer | Apasionado del Código Limpio  🏛️</strong>
 </p>
 
 <p align="center">
