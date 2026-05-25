@@ -16,10 +16,10 @@ Especializado en el diseño de sistemas escalables y plataformas de alto rendimi
 
 Trabajo bajo principios sólidos de ingeniería de software, priorizando mantenibilidad, tipado estricto y separación clara de responsabilidades.
 
-• Domain-Driven Design (DDD) & Arquitectura Hexagonal
-• TypeScript estricto y validación segura con Zod/Pydantic
-• CI/CD, testing y quality gates
-• Diseño de sistemas deterministas y orientados a análisis cuantitativo
+• Domain-Driven Design (DDD) & Arquitectura Hexagonal.
+• TypeScript estricto y validación segura con Zod/Pydantic.
+• CI/CD, testing y quality gates.
+• Diseño de sistemas deterministas y orientados a análisis cuantitativo.
 • Arquitecturas desacopladas, mantenibles y cloud-ready.
 
 ---
