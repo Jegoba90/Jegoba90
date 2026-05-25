@@ -8,11 +8,19 @@
 
 ## Quién Soy & Filosofía de Trabajo
 
-Especializado en el diseño de sistemas escalables y plataformas de alto rendimiento. Enfocado en arquitectura moderna, calidad de código y automatización, construyendo soluciones mantenibles y robustas bajo principios sólidos de ingeniería de software.
+¡Hola! Soy Jesús González
 
-*   **Arquitecturas Robustas:** Firme creyente y practicante de **Domain-Driven Design (DDD)** y **Arquitectura Hexagonal**. El código de negocio es un activo sagrado que debe permanecer agnóstico de frameworks e infraestructura.
-*   **Filosofía Zero-Any & Tipado Estricto:** Diseño fronteras de datos seguras. Si un dato entra en el sistema, pasa por una validación estricta en tiempo de ejecución (Zod / Pydantic).
-*   **Matemática sobre Narrativa:** Diseñador de motores deterministas que separan la especulación del cálculo cuantitativo riguroso (Filtros de Kalman, Exponentes de Lyapunov).
+Software Architect | Fullstack Engineer | Scalable Systems & Clean Architecture
+
+Especializado en el diseño de sistemas escalables y plataformas de alto rendimiento, con foco en arquitectura moderna, calidad de código y automatización.
+
+Trabajo bajo principios sólidos de ingeniería de software, priorizando mantenibilidad, tipado estricto y separación clara de responsabilidades.
+
+• Domain-Driven Design (DDD) & Arquitectura Hexagonal
+• TypeScript estricto y validación segura con Zod/Pydantic
+• CI/CD, testing y quality gates
+• Diseño de sistemas deterministas y orientados a análisis cuantitativo
+• Arquitecturas desacopladas, mantenibles y cloud-ready.
 
 ---
 
