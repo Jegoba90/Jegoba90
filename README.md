@@ -1,7 +1,7 @@
 # ¡Hola! Soy Jesús González (Jegoba90) 👋
 
 <p align="center">
-  <strong>Fullstack Software Architect | Apasionado del Código Limpio  🏛️</strong>
+  <strong>Arquitecto de Software Fullstack | Apasionado del Código Limpio 🏛️</strong>
 </p>
 
 ---
@@ -12,7 +12,7 @@ Arquitecto de Software Fullstack especializado en el diseño de sistemas escalab
 
 *   **Arquitecturas Robustas:** Firme creyente y practicante de **Domain-Driven Design (DDD)** y **Arquitectura Hexagonal**. El código de negocio es un activo sagrado que debe permanecer agnóstico de frameworks e infraestructura.
 *   **Filosofía Zero-Any & Tipado Estricto:** Diseño fronteras de datos seguras. Si un dato entra en el sistema, pasa por una validación estricta en tiempo de ejecución (Zod / Pydantic).
-*   **Matemática sobre Narrativa:** Diseñador de motores deterministas que separan la especulación del cálculo cuantitativo riguroso (Filtros de Kalman, Análisis Fractal).
+*   **Matemática sobre Narrativa:** Diseñador de motores deterministas que separan la especulación del cálculo cuantitativo riguroso (Filtros de Kalman, Exponentes de Lyapunov).
 
 ---
 
@@ -33,7 +33,7 @@ Arquitecto de Software Fullstack especializado en el diseño de sistemas escalab
   <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas" />
 </p>
 
-### 💾 Persistencia, Mensajería & Caché
+### 💾 Persistencia & Caché
 <p align="left">
   <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL" />
   <img src="https://img.shields.io/badge/Neon-00E599?style=for-the-badge&logo=postgresql&logoColor=black" alt="Neon Serverless" />
@@ -48,7 +48,7 @@ Arquitecto de Software Fullstack especializado en el diseño de sistemas escalab
   <img src="https://img.shields.io/badge/Firebase-DD2C00?style=for-the-badge&logo=firebase&logoColor=white" alt="Firebase" />
 </p>
 
-### 🛸 DevOps, Infraestructura & QA
+### 🚀 DevOps, Infraestructura & QA
 <p align="left">
   <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" />
   <img src="https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white" alt="GCP" />
@@ -61,12 +61,12 @@ Arquitecto de Software Fullstack especializado en el diseño de sistemas escalab
 
 ## 🏛️ Proyecto Destacado / Flagship
 
-### ⚡ [CryptoCapy Portfolio](https://github.com/Jegoba90/CryptoCapy-Portfolio)
-**Terminal de Inteligencia Híbrida y Análisis Cuantitativo B2B**
+### ⚡ [CryptoCapi](https://github.com/Jegoba90/CryptoCapy-Portfolio)
+**Terminal de Inteligencia Institucional y Análisis Cuantitativo**
 
 Plataforma de análisis de criptomonedas diseñada bajo el principio de *"Supremacía Matemática"*: la estadística determinista valida o invalida la narrativa de la IA.
 *   **Arquitectura Hexagonal Completa:** Frontend reactivo en TypeScript Vanilla (Zero-Framework overhead) + Backend Express + Microservicio Python Quant.
-*   **Preferencia Matemática:** Implementación de Filtros de Kalman, Exponentes de Lyapunov, cálculo adaptativo de Z-Score sobre t-Student y análisis On-Chain directo de la blockchain.
+*   **Núcleo Matemático:** Implementación de Filtros de Kalman, Exponentes de Lyapunov, cálculo adaptativo de Z-Score logarítmico y análisis On-Chain directo de la blockchain.
 *   **Higiene de Datos:** Filtro post-LLM anti-alucinaciones desarrollado en Python puro y contratos estrictos garantizados mediante Zod y Pydantic.
 
 ---
@@ -74,8 +74,8 @@ Plataforma de análisis de criptomonedas diseñada bajo el principio de *"Suprem
 ## 📊 Estadísticas de GitHub
 
 <p align="center">
-  <img src="https://github-readme-stats-six.vercel.app/api?username=Jegoba90&show_icons=true&theme=tokyonight&count_private=true" alt="Estadísticas de Jegoba90" width="48%" />
-  <img src="https://github-readme-stats-six.vercel.app/api/top-langs/?username=Jegoba90&layout=compact&theme=tokyonight" alt="Lenguajes más usados por Jegoba90" width="48%" />
+  <img src="https://github-readme-stats.vercel.app/api?username=Jegoba90&show_icons=true&theme=tokyonight&count_private=true" alt="Estadísticas de Jegoba90" width="48%" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Jegoba90&layout=compact&theme=tokyonight" alt="Lenguajes más usados por Jegoba90" width="48%" />
 </p>
 
 ---
