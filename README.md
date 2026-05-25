@@ -8,7 +8,7 @@
 
 ## 🧠 Quién Soy & Filosofía de Trabajo
 
-Soy un **Arquitecto de Software Fullstack** especializado en el diseño de sistemas de alto rendimiento y arquitecturas escalables. Mi enfoque de desarrollo se basa en **construir con el rigor metodológico de la ingeniería de software**, priorizando siempre el diseño estructural, la mantenibilidad a largo plazo y la eficiencia absoluta.
+Arquitecto de Software Fullstack especializado en el diseño de sistemas escalables y plataformas de alto rendimiento. Enfocado en arquitectura moderna, calidad de código y automatización, construyendo soluciones mantenibles y robustas bajo principios sólidos de ingeniería de software.
 
 *   **Arquitecturas Robustas:** Firme creyente y practicante de **Domain-Driven Design (DDD)** y **Arquitectura Hexagonal**. El código de negocio es un activo sagrado que debe permanecer agnóstico de frameworks e infraestructura.
 *   **Filosofía Zero-Any & Tipado Estricto:** Diseño fronteras de datos seguras. Si un dato entra en el sistema, pasa por una validación estricta en tiempo de ejecución (Zod / Pydantic).
