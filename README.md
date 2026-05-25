@@ -79,8 +79,8 @@ Plataforma de análisis de criptomonedas diseñada bajo el principio de *"Suprem
 ## 📊 Estadísticas de GitHub
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=Jegoba90&show_icons=true&theme=tokyonight&count_private=true" alt="Estadísticas de Jegoba90" width="48%" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Jegoba90&layout=compact&theme=tokyonight" alt="Lenguajes más usados por Jegoba90" width="48%" />
+  <img src="https://github-readme-stats-six.vercel.app/api?username=Jegoba90&show_icons=true&theme=tokyonight&count_private=true" alt="Estadísticas de Jegoba90" width="48%" />
+  <img src="https://github-readme-stats-six.vercel.app/api/top-langs/?username=Jegoba90&layout=compact&theme=tokyonight" alt="Lenguajes más usados por Jegoba90" width="48%" />
 </p>
 
 ---
