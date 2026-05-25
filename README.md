@@ -6,11 +6,8 @@
 
 ---
 
-## Quién Soy & Filosofía de Trabajo
+## Filosofía de Trabajo
 
-¡Hola! Soy Jesús González
-
-Software Architect | Fullstack Engineer | Scalable Systems & Clean Architecture
 
 Especializado en el diseño de sistemas escalables y plataformas de alto rendimiento, con foco en arquitectura moderna, calidad de código y automatización.
 
