@@ -1,7 +1,7 @@
 # ¡Hola! Soy Jesús González 
 
 <p align="center">
-  <strong>Arquitecto de Software Fullstack | Apasionado del Código Limpio 🏛️</strong>
+  <strong>Software Architect | Fullstack Engineer | Scalable Systems & Clean Architecture 🏛️</strong>
 </p>
 
 ---
