@@ -1,4 +1,4 @@
-# ¡Hola! Soy Jesús González (Jegoba90) 👋
+# ¡Hola! Soy Jesús González 
 
 <p align="center">
   <strong>Arquitecto de Software Fullstack | Apasionado del Código Limpio 🏛️</strong>
@@ -6,7 +6,7 @@
 
 ---
 
-## 🧠 Quién Soy & Filosofía de Trabajo
+## Quién Soy & Filosofía de Trabajo
 
 Arquitecto de Software Fullstack especializado en el diseño de sistemas escalables y plataformas de alto rendimiento. Enfocado en arquitectura moderna, calidad de código y automatización, construyendo soluciones mantenibles y robustas bajo principios sólidos de ingeniería de software.
 
