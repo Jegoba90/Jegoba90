@@ -1,7 +1,7 @@
 # ¡Hola! Soy Jesús González 
 
 <p align="center">
-  <strong>Software Architect | Fullstack Engineer | Scalable Systems & Clean Architecture 🏛️</strong>
+  <strong>Product Builder & AI Systems Architect | Orchestrating LLMs & Clean Architecture 🏛️</strong>
 </p>
 
 ---
