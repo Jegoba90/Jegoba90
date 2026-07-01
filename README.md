@@ -74,6 +74,13 @@ Plataforma de análisis de criptomonedas diseñada bajo el principio de *"Suprem
 *   **Núcleo Matemático:** Implementación de Filtros de Kalman, Exponentes de Lyapunov, cálculo adaptativo de Z-Score logarítmico y análisis On-Chain directo de la blockchain.
 *   **Higiene de Datos:** Filtro post-LLM anti-alucinaciones desarrollado en Python puro y contratos estrictos garantizados mediante Zod y Pydantic.
 
+### 🤖 [anti-hallucination-crypto-agent](https://github.com/Jegoba90/anti-hallucination-crypto-agent)
+**Agente Python open source que consume la API de CryptoCapi**
+
+Demuestra el pipeline anti-alucinación directo en la terminal: cada insight llega con un `audit_trail` sellado con SHA-256 que prueba qué afirmaciones de la IA corrigió el motor matemático. Funciona sin registro para BTC/ETH.
+*   **Verificable:** el `protocol_hash` se reproduce con 5 líneas de Python.
+*   **Stack:** Python 3.11+, httpx async, Typer, Rich. Licencia MIT.
+
 ---
 
 
