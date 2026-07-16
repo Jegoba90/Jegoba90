@@ -66,7 +66,7 @@ Trabajo bajo principios sólidos de ingeniería de software, priorizando manteni
 
 ## 🏛️ Proyecto Destacado / Flagship
 
-### ⚡ [CryptoCapi](https://github.com/Jegoba90/CryptoCapy-Portfolio)
+### ⚡ [CryptoCapi](https://github.com/Jegoba90/CryptoCapi-Portfolio)
 **Terminal de Inteligencia Institucional y Análisis Cuantitativo**
 
 Plataforma de análisis de criptomonedas diseñada bajo el principio de *"Supremacía Matemática"*: la estadística determinista valida o invalida la narrativa de la IA.
