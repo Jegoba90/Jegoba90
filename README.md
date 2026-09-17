@@ -11,7 +11,4 @@ Currently building:
 - 🧠 **Anti-hallucination systems** — AI + mathematics + auditability · `Python`
 
 Also shipping:
-- 🫓 **El Cafetal Foods** — storefront for a Venezuelan food shop in Buenos Aires.
-  Conversational commerce: no cart, no checkout — every order closes on WhatsApp · `Astro` `TypeScript` `Zod`
-
-**TypeScript · Go · Python · AI · Systems**
+- 🛒 **El Cafetal Foods** — storefront with conversational commerce: no cart, no checkout — every order closes on WhatsApp · `Astro` `TypeScript` `Zod`
