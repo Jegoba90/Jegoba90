@@ -7,7 +7,7 @@ I build software around one idea:
 Currently building:
 - 🛡️ **Ganimedes** — security & governance for AI agents · `Go`
 - 📊 **CryptoCapi** — deterministic crypto intelligence · `TypeScript` `Python`
-- 🔌 **CryptoCapi MCP** — that sealed analysis as native tools for any agent · `TypeScript`
+- 🔌 **CryptoCapi MCP** — verifiable market analysis as native tools for any MCP agent. Four engines, demo key included, no signup · `TypeScript`
 - 🧠 **Anti-hallucination systems** — AI + mathematics + auditability · `Python`
 
 Also shipping:
