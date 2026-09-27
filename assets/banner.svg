@@ -1,17 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-labelledby="title">
   <title id="title">Jesús Antonio González, Founder &amp; Builder</title>
   <style>
-    .pulse {
-      stroke-dasharray: 0.14 1.2;
-      stroke-dashoffset: 0.14;
-      animation: flow 3.6s cubic-bezier(0.45, 0, 0.25, 1) infinite;
+    @keyframes comet-0 {
+      0% { stroke-dashoffset: 0.16; }
+      55%, 100% { stroke-dashoffset: -1.04; }
     }
-    @keyframes flow {
-      0% { stroke-dashoffset: 0.14; }
-      75%, 100% { stroke-dashoffset: -1; }
+    @keyframes comet-1 {
+      0% { stroke-dashoffset: 0.07; }
+      55%, 100% { stroke-dashoffset: -1.13; }
+    }
+    @keyframes comet-2 {
+      0% { stroke-dashoffset: 0.018; }
+      55%, 100% { stroke-dashoffset: -1.182; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .pulse { animation: none; visibility: hidden; }
+      .comets { display: none; }
     }
   </style>
   <defs>
@@ -20,32 +23,26 @@
       <stop offset="0" stop-color="#18e299" stop-opacity="0.07"/>
       <stop offset="0.7" stop-color="#18e299" stop-opacity="0"/>
     </radialGradient>
-    <linearGradient id="fade-left" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="280" y2="0">
-      <stop offset="0" stop-color="#18e299" stop-opacity="0"/>
-      <stop offset="0.45" stop-color="#18e299" stop-opacity="0.9"/>
-      <stop offset="0.85" stop-color="#a6fb33" stop-opacity="1"/>
-      <stop offset="1" stop-color="#a6fb33" stop-opacity="0"/>
+    <linearGradient id="fade-left" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="282" y2="0">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="0.4" stop-color="#fff" stop-opacity="0.3"/>
+      <stop offset="0.85" stop-color="#fff" stop-opacity="1"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0.35"/>
     </linearGradient>
-    <linearGradient id="fade-right" gradientUnits="userSpaceOnUse" x1="1280" y1="0" x2="1000" y2="0">
-      <stop offset="0" stop-color="#18e299" stop-opacity="0"/>
-      <stop offset="0.45" stop-color="#18e299" stop-opacity="0.9"/>
-      <stop offset="0.85" stop-color="#a6fb33" stop-opacity="1"/>
-      <stop offset="1" stop-color="#a6fb33" stop-opacity="0"/>
+    <mask id="mask-left" maskUnits="userSpaceOnUse" x="0" y="0" width="282" height="320">
+      <rect x="0" y="0" width="282" height="320" fill="url(#fade-left)"/>
+    </mask>
+    <linearGradient id="fade-right" gradientUnits="userSpaceOnUse" x1="1280" y1="0" x2="998" y2="0">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="0.4" stop-color="#fff" stop-opacity="0.3"/>
+      <stop offset="0.85" stop-color="#fff" stop-opacity="1"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0.35"/>
     </linearGradient>
-    <linearGradient id="pulse-left" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="280" y2="0">
-      <stop offset="0" stop-color="#c9f790" stop-opacity="0"/>
-      <stop offset="0.3" stop-color="#7ee4b4" stop-opacity="1"/>
-      <stop offset="0.85" stop-color="#e6ffc2" stop-opacity="1"/>
-      <stop offset="1" stop-color="#e6ffc2" stop-opacity="0"/>
-    </linearGradient>
-    <linearGradient id="pulse-right" gradientUnits="userSpaceOnUse" x1="1280" y1="0" x2="1000" y2="0">
-      <stop offset="0" stop-color="#c9f790" stop-opacity="0"/>
-      <stop offset="0.3" stop-color="#7ee4b4" stop-opacity="1"/>
-      <stop offset="0.85" stop-color="#e6ffc2" stop-opacity="1"/>
-      <stop offset="1" stop-color="#e6ffc2" stop-opacity="0"/>
-    </linearGradient>
-    <filter id="glow" x="-10%" y="-50%" width="120%" height="200%">
-      <feGaussianBlur stdDeviation="3"/>
+    <mask id="mask-right" maskUnits="userSpaceOnUse" x="998" y="0" width="282" height="320">
+      <rect x="998" y="0" width="282" height="320" fill="url(#fade-right)"/>
+    </mask>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.5"/>
     </filter>
   </defs>
 
@@ -61,48 +58,150 @@
       <line x1="0" y1="279.5" x2="1280" y2="279.5"/>
     </g>
 
-    <!-- Resting lines: a soft glow, then the sharp line -->
-    <g fill="none" opacity="0.3" filter="url(#glow)" stroke-width="2">
-    <path d="M0 50 C120 50 140 121 236 121 L280 121" stroke="url(#fade-left)" />
-    <path d="M0 108 C120 108 140 131 236 131 L280 131" stroke="url(#fade-left)" />
-    <path d="M0 206 C120 206 140 141 236 141 L280 141" stroke="url(#fade-left)" />
-    <path d="M0 266 C120 266 140 151 236 151 L280 151" stroke="url(#fade-left)" />
-    <path d="M1280 56 C1160 56 1140 121 1044 121 L1000 121" stroke="url(#fade-right)" />
-    <path d="M1280 100 C1160 100 1140 131 1044 131 L1000 131" stroke="url(#fade-right)" />
-    <path d="M1280 214 C1160 214 1140 141 1044 141 L1000 141" stroke="url(#fade-right)" />
-    <path d="M1280 262 C1160 262 1140 151 1044 151 L1000 151" stroke="url(#fade-right)" />
+    <g mask="url(#mask-left)" fill="none">
+      <g filter="url(#glow)" opacity="0.25" stroke-width="2">
+      <path d="M-40 -120 C65 29.4 170 119 260 129" stroke="#2ee6b0"/>
+      <path d="M-40 -91.9 C65.7 36 172.1 120.8 262.1 129.7" stroke="#32e6ab"/>
+      <path d="M-40 -64 C66.5 43.7 174.2 122.6 264.2 130.3" stroke="#36e6a5"/>
+      <path d="M-40 -36.5 C67.2 52.5 176.3 124.3 266.3 131" stroke="#3ae6a0"/>
+      <path d="M-40 -9.3 C67.9 62.4 178.4 126 268.4 131.7" stroke="#3fe59a"/>
+      <path d="M-40 17.4 C68.7 73.2 180.5 127.7 270.5 132.3" stroke="#43e595"/>
+      <path d="M-40 43.7 C69.4 85 182.6 129.4 272.6 133" stroke="#47e58f"/>
+      <path d="M-40 69.4 C70.1 97.7 184.7 131.1 274.7 133.7" stroke="#4be58a"/>
+      <path d="M-40 94.3 C70.9 111 186.8 132.7 276.8 134.3" stroke="#55e582"/>
+      <path d="M-40 118.2 C71.6 124.9 188.9 134.3 278.9 135" stroke="#5ee679"/>
+      <path d="M-40 140.5 C72.3 138.7 191 135.9 281 135.7" stroke="#68e671"/>
+      <path d="M-40 159.5 C72.3 151.4 191 137.3 281 136.3" stroke="#71e768"/>
+      <path d="M-40 181.8 C71.6 167.2 188.9 138.8 278.9 137" stroke="#7be760"/>
+      <path d="M-40 205.7 C70.9 185.1 186.8 140.4 276.8 137.7" stroke="#84e857"/>
+      <path d="M-40 230.6 C70.1 204.8 184.7 142 274.7 138.3" stroke="#8ee84f"/>
+      <path d="M-40 256.3 C69.4 226.1 182.6 143.7 272.6 139" stroke="#93e74c"/>
+      <path d="M-40 282.6 C68.7 249.1 180.5 145.4 270.5 139.7" stroke="#99e749"/>
+      <path d="M-40 309.3 C67.9 273.6 178.4 147.1 268.4 140.3" stroke="#9ee646"/>
+      <path d="M-40 336.5 C67.2 299.6 176.3 148.8 266.3 141" stroke="#a4e543"/>
+      <path d="M-40 364 C66.5 327.2 174.2 150.6 264.2 141.7" stroke="#a9e440"/>
+      <path d="M-40 391.9 C65.7 356.2 172.1 152.3 262.1 142.3" stroke="#afe43d"/>
+      <path d="M-40 420 C65 386.8 170 154.1 260 143" stroke="#b4e33a"/>
+      <path d="M178 332 C190 236 248 154 282 141" stroke="#c2e83a" stroke-width="1.1"/>
+      <path d="M188 332 C200 233 248 154 282 139" stroke="#c2e83a" stroke-width="1.1"/>
+      <path d="M198 332 C210 230 248 154 282 137" stroke="#c2e83a" stroke-width="1.1"/>
+      <path d="M208 332 C220 227 248 154 282 135" stroke="#c2e83a" stroke-width="1.1"/>
+      <path d="M218 332 C230 224 248 154 282 133" stroke="#c2e83a" stroke-width="1.1"/>
+      </g>
+      <g opacity="0.9" stroke-width="1">
+      <path d="M-40 -120 C65 29.4 170 119 260 129" stroke="#2ee6b0"/>
+      <path d="M-40 -91.9 C65.7 36 172.1 120.8 262.1 129.7" stroke="#32e6ab"/>
+      <path d="M-40 -64 C66.5 43.7 174.2 122.6 264.2 130.3" stroke="#36e6a5"/>
+      <path d="M-40 -36.5 C67.2 52.5 176.3 124.3 266.3 131" stroke="#3ae6a0"/>
+      <path d="M-40 -9.3 C67.9 62.4 178.4 126 268.4 131.7" stroke="#3fe59a"/>
+      <path d="M-40 17.4 C68.7 73.2 180.5 127.7 270.5 132.3" stroke="#43e595"/>
+      <path d="M-40 43.7 C69.4 85 182.6 129.4 272.6 133" stroke="#47e58f"/>
+      <path d="M-40 69.4 C70.1 97.7 184.7 131.1 274.7 133.7" stroke="#4be58a"/>
+      <path d="M-40 94.3 C70.9 111 186.8 132.7 276.8 134.3" stroke="#55e582"/>
+      <path d="M-40 118.2 C71.6 124.9 188.9 134.3 278.9 135" stroke="#5ee679"/>
+      <path d="M-40 140.5 C72.3 138.7 191 135.9 281 135.7" stroke="#68e671"/>
+      <path d="M-40 159.5 C72.3 151.4 191 137.3 281 136.3" stroke="#71e768"/>
+      <path d="M-40 181.8 C71.6 167.2 188.9 138.8 278.9 137" stroke="#7be760"/>
+      <path d="M-40 205.7 C70.9 185.1 186.8 140.4 276.8 137.7" stroke="#84e857"/>
+      <path d="M-40 230.6 C70.1 204.8 184.7 142 274.7 138.3" stroke="#8ee84f"/>
+      <path d="M-40 256.3 C69.4 226.1 182.6 143.7 272.6 139" stroke="#93e74c"/>
+      <path d="M-40 282.6 C68.7 249.1 180.5 145.4 270.5 139.7" stroke="#99e749"/>
+      <path d="M-40 309.3 C67.9 273.6 178.4 147.1 268.4 140.3" stroke="#9ee646"/>
+      <path d="M-40 336.5 C67.2 299.6 176.3 148.8 266.3 141" stroke="#a4e543"/>
+      <path d="M-40 364 C66.5 327.2 174.2 150.6 264.2 141.7" stroke="#a9e440"/>
+      <path d="M-40 391.9 C65.7 356.2 172.1 152.3 262.1 142.3" stroke="#afe43d"/>
+      <path d="M-40 420 C65 386.8 170 154.1 260 143" stroke="#b4e33a"/>
+      <path d="M178 332 C190 236 248 154 282 141" stroke="#c2e83a" stroke-width="1.1"/>
+      <path d="M188 332 C200 233 248 154 282 139" stroke="#c2e83a" stroke-width="1.1"/>
+      <path d="M198 332 C210 230 248 154 282 137" stroke="#c2e83a" stroke-width="1.1"/>
+      <path d="M208 332 C220 227 248 154 282 135" stroke="#c2e83a" stroke-width="1.1"/>
+      <path d="M218 332 C230 224 248 154 282 133" stroke="#c2e83a" stroke-width="1.1"/>
+      </g>
     </g>
-    <g fill="none" opacity="0.6">
-    <path d="M0 50 C120 50 140 121 236 121 L280 121" stroke="url(#fade-left)" />
-    <path d="M0 108 C120 108 140 131 236 131 L280 131" stroke="url(#fade-left)" />
-    <path d="M0 206 C120 206 140 141 236 141 L280 141" stroke="url(#fade-left)" />
-    <path d="M0 266 C120 266 140 151 236 151 L280 151" stroke="url(#fade-left)" />
-    <path d="M1280 56 C1160 56 1140 121 1044 121 L1000 121" stroke="url(#fade-right)" />
-    <path d="M1280 100 C1160 100 1140 131 1044 131 L1000 131" stroke="url(#fade-right)" />
-    <path d="M1280 214 C1160 214 1140 141 1044 141 L1000 141" stroke="url(#fade-right)" />
-    <path d="M1280 262 C1160 262 1140 151 1044 151 L1000 151" stroke="url(#fade-right)" />
+    <g mask="url(#mask-right)" fill="none">
+      <g filter="url(#glow)" opacity="0.25" stroke-width="2">
+      <path d="M1320 -120 C1215 29.4 1110 119 1020 129" stroke="#2ee6b0"/>
+      <path d="M1320 -91.9 C1214.3 36 1107.9 120.8 1017.9 129.7" stroke="#32e6ab"/>
+      <path d="M1320 -64 C1213.5 43.7 1105.8 122.6 1015.8 130.3" stroke="#36e6a5"/>
+      <path d="M1320 -36.5 C1212.8 52.5 1103.7 124.3 1013.7 131" stroke="#3ae6a0"/>
+      <path d="M1320 -9.3 C1212.1 62.4 1101.6 126 1011.6 131.7" stroke="#3fe59a"/>
+      <path d="M1320 17.4 C1211.3 73.2 1099.5 127.7 1009.5 132.3" stroke="#43e595"/>
+      <path d="M1320 43.7 C1210.6 85 1097.4 129.4 1007.4 133" stroke="#47e58f"/>
+      <path d="M1320 69.4 C1209.9 97.7 1095.3 131.1 1005.3 133.7" stroke="#4be58a"/>
+      <path d="M1320 94.3 C1209.1 111 1093.2 132.7 1003.2 134.3" stroke="#55e582"/>
+      <path d="M1320 118.2 C1208.4 124.9 1091.1 134.3 1001.1 135" stroke="#5ee679"/>
+      <path d="M1320 140.5 C1207.7 138.7 1089 135.9 999 135.7" stroke="#68e671"/>
+      <path d="M1320 159.5 C1207.7 151.4 1089 137.3 999 136.3" stroke="#71e768"/>
+      <path d="M1320 181.8 C1208.4 167.2 1091.1 138.8 1001.1 137" stroke="#7be760"/>
+      <path d="M1320 205.7 C1209.1 185.1 1093.2 140.4 1003.2 137.7" stroke="#84e857"/>
+      <path d="M1320 230.6 C1209.9 204.8 1095.3 142 1005.3 138.3" stroke="#8ee84f"/>
+      <path d="M1320 256.3 C1210.6 226.1 1097.4 143.7 1007.4 139" stroke="#93e74c"/>
+      <path d="M1320 282.6 C1211.3 249.1 1099.5 145.4 1009.5 139.7" stroke="#99e749"/>
+      <path d="M1320 309.3 C1212.1 273.6 1101.6 147.1 1011.6 140.3" stroke="#9ee646"/>
+      <path d="M1320 336.5 C1212.8 299.6 1103.7 148.8 1013.7 141" stroke="#a4e543"/>
+      <path d="M1320 364 C1213.5 327.2 1105.8 150.6 1015.8 141.7" stroke="#a9e440"/>
+      <path d="M1320 391.9 C1214.3 356.2 1107.9 152.3 1017.9 142.3" stroke="#afe43d"/>
+      <path d="M1320 420 C1215 386.8 1110 154.1 1020 143" stroke="#b4e33a"/>
+      <path d="M1102 332 C1090 236 1032 154 998 141" stroke="#c2e83a" stroke-width="1.1"/>
+      <path d="M1092 332 C1080 233 1032 154 998 139" stroke="#c2e83a" stroke-width="1.1"/>
+      <path d="M1082 332 C1070 230 1032 154 998 137" stroke="#c2e83a" stroke-width="1.1"/>
+      <path d="M1072 332 C1060 227 1032 154 998 135" stroke="#c2e83a" stroke-width="1.1"/>
+      <path d="M1062 332 C1050 224 1032 154 998 133" stroke="#c2e83a" stroke-width="1.1"/>
+      </g>
+      <g opacity="0.9" stroke-width="1">
+      <path d="M1320 -120 C1215 29.4 1110 119 1020 129" stroke="#2ee6b0"/>
+      <path d="M1320 -91.9 C1214.3 36 1107.9 120.8 1017.9 129.7" stroke="#32e6ab"/>
+      <path d="M1320 -64 C1213.5 43.7 1105.8 122.6 1015.8 130.3" stroke="#36e6a5"/>
+      <path d="M1320 -36.5 C1212.8 52.5 1103.7 124.3 1013.7 131" stroke="#3ae6a0"/>
+      <path d="M1320 -9.3 C1212.1 62.4 1101.6 126 1011.6 131.7" stroke="#3fe59a"/>
+      <path d="M1320 17.4 C1211.3 73.2 1099.5 127.7 1009.5 132.3" stroke="#43e595"/>
+      <path d="M1320 43.7 C1210.6 85 1097.4 129.4 1007.4 133" stroke="#47e58f"/>
+      <path d="M1320 69.4 C1209.9 97.7 1095.3 131.1 1005.3 133.7" stroke="#4be58a"/>
+      <path d="M1320 94.3 C1209.1 111 1093.2 132.7 1003.2 134.3" stroke="#55e582"/>
+      <path d="M1320 118.2 C1208.4 124.9 1091.1 134.3 1001.1 135" stroke="#5ee679"/>
+      <path d="M1320 140.5 C1207.7 138.7 1089 135.9 999 135.7" stroke="#68e671"/>
+      <path d="M1320 159.5 C1207.7 151.4 1089 137.3 999 136.3" stroke="#71e768"/>
+      <path d="M1320 181.8 C1208.4 167.2 1091.1 138.8 1001.1 137" stroke="#7be760"/>
+      <path d="M1320 205.7 C1209.1 185.1 1093.2 140.4 1003.2 137.7" stroke="#84e857"/>
+      <path d="M1320 230.6 C1209.9 204.8 1095.3 142 1005.3 138.3" stroke="#8ee84f"/>
+      <path d="M1320 256.3 C1210.6 226.1 1097.4 143.7 1007.4 139" stroke="#93e74c"/>
+      <path d="M1320 282.6 C1211.3 249.1 1099.5 145.4 1009.5 139.7" stroke="#99e749"/>
+      <path d="M1320 309.3 C1212.1 273.6 1101.6 147.1 1011.6 140.3" stroke="#9ee646"/>
+      <path d="M1320 336.5 C1212.8 299.6 1103.7 148.8 1013.7 141" stroke="#a4e543"/>
+      <path d="M1320 364 C1213.5 327.2 1105.8 150.6 1015.8 141.7" stroke="#a9e440"/>
+      <path d="M1320 391.9 C1214.3 356.2 1107.9 152.3 1017.9 142.3" stroke="#afe43d"/>
+      <path d="M1320 420 C1215 386.8 1110 154.1 1020 143" stroke="#b4e33a"/>
+      <path d="M1102 332 C1090 236 1032 154 998 141" stroke="#c2e83a" stroke-width="1.1"/>
+      <path d="M1092 332 C1080 233 1032 154 998 139" stroke="#c2e83a" stroke-width="1.1"/>
+      <path d="M1082 332 C1070 230 1032 154 998 137" stroke="#c2e83a" stroke-width="1.1"/>
+      <path d="M1072 332 C1060 227 1032 154 998 135" stroke="#c2e83a" stroke-width="1.1"/>
+      <path d="M1062 332 C1050 224 1032 154 998 133" stroke="#c2e83a" stroke-width="1.1"/>
+      </g>
     </g>
 
-    <!-- Pulses travelling from the edges into the name -->
-    <g fill="none" stroke-linecap="round" filter="url(#glow)" stroke-width="4" opacity="0.8">
-    <path class="pulse" pathLength="1" style="animation-delay:-0s" d="M0 50 C120 50 140 121 236 121 L280 121" stroke="url(#pulse-left)" />
-    <path class="pulse" pathLength="1" style="animation-delay:-1.8s" d="M0 108 C120 108 140 131 236 131 L280 131" stroke="url(#pulse-left)" />
-    <path class="pulse" pathLength="1" style="animation-delay:-0.9s" d="M0 206 C120 206 140 141 236 141 L280 141" stroke="url(#pulse-left)" />
-    <path class="pulse" pathLength="1" style="animation-delay:-2.7s" d="M0 266 C120 266 140 151 236 151 L280 151" stroke="url(#pulse-left)" />
-    <path class="pulse" pathLength="1" style="animation-delay:-0.45s" d="M1280 56 C1160 56 1140 121 1044 121 L1000 121" stroke="url(#pulse-right)" />
-    <path class="pulse" pathLength="1" style="animation-delay:-2.25s" d="M1280 100 C1160 100 1140 131 1044 131 L1000 131" stroke="url(#pulse-right)" />
-    <path class="pulse" pathLength="1" style="animation-delay:-1.35s" d="M1280 214 C1160 214 1140 141 1044 141 L1000 141" stroke="url(#pulse-right)" />
-    <path class="pulse" pathLength="1" style="animation-delay:-3.15s" d="M1280 262 C1160 262 1140 151 1044 151 L1000 151" stroke="url(#pulse-right)" />
-    </g>
-    <g fill="none" stroke-linecap="round" stroke-width="1.6">
-    <path class="pulse" pathLength="1" style="animation-delay:-0s" d="M0 50 C120 50 140 121 236 121 L280 121" stroke="url(#pulse-left)" />
-    <path class="pulse" pathLength="1" style="animation-delay:-1.8s" d="M0 108 C120 108 140 131 236 131 L280 131" stroke="url(#pulse-left)" />
-    <path class="pulse" pathLength="1" style="animation-delay:-0.9s" d="M0 206 C120 206 140 141 236 141 L280 141" stroke="url(#pulse-left)" />
-    <path class="pulse" pathLength="1" style="animation-delay:-2.7s" d="M0 266 C120 266 140 151 236 151 L280 151" stroke="url(#pulse-left)" />
-    <path class="pulse" pathLength="1" style="animation-delay:-0.45s" d="M1280 56 C1160 56 1140 121 1044 121 L1000 121" stroke="url(#pulse-right)" />
-    <path class="pulse" pathLength="1" style="animation-delay:-2.25s" d="M1280 100 C1160 100 1140 131 1044 131 L1000 131" stroke="url(#pulse-right)" />
-    <path class="pulse" pathLength="1" style="animation-delay:-1.35s" d="M1280 214 C1160 214 1140 141 1044 141 L1000 141" stroke="url(#pulse-right)" />
-    <path class="pulse" pathLength="1" style="animation-delay:-3.15s" d="M1280 262 C1160 262 1140 151 1044 151 L1000 151" stroke="url(#pulse-right)" />
+    <g class="comets" fill="none" stroke-linecap="round">
+      <g mask="url(#mask-left)">
+      <path pathLength="1" d="M-40 -9.3 C67.9 62.4 178.4 126 268.4 131.7" stroke="#ffa3d3" stroke-opacity="0.28" stroke-width="1.2" stroke-dasharray="0.16 2" stroke-dashoffset="0.16" style="animation: comet-0 7s cubic-bezier(0.5, 0, 0.3, 1) -0.4s infinite"/>
+      <path pathLength="1" d="M-40 -9.3 C67.9 62.4 178.4 126 268.4 131.7" stroke="#ffa3d3" stroke-opacity="0.85" stroke-width="1.4" stroke-dasharray="0.07 2" stroke-dashoffset="0.07" style="animation: comet-1 7s cubic-bezier(0.5, 0, 0.3, 1) -0.4s infinite"/>
+      <path pathLength="1" d="M-40 -9.3 C67.9 62.4 178.4 126 268.4 131.7" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6" stroke-dasharray="0.018 2" stroke-dashoffset="0.018" style="animation: comet-2 7s cubic-bezier(0.5, 0, 0.3, 1) -0.4s infinite"/>
+      <path pathLength="1" d="M-40 181.8 C71.6 167.2 188.9 138.8 278.9 137" stroke="#ffa3d3" stroke-opacity="0.28" stroke-width="1.2" stroke-dasharray="0.16 2" stroke-dashoffset="0.16" style="animation: comet-0 7s cubic-bezier(0.5, 0, 0.3, 1) -3.9s infinite"/>
+      <path pathLength="1" d="M-40 181.8 C71.6 167.2 188.9 138.8 278.9 137" stroke="#ffa3d3" stroke-opacity="0.85" stroke-width="1.4" stroke-dasharray="0.07 2" stroke-dashoffset="0.07" style="animation: comet-1 7s cubic-bezier(0.5, 0, 0.3, 1) -3.9s infinite"/>
+      <path pathLength="1" d="M-40 181.8 C71.6 167.2 188.9 138.8 278.9 137" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6" stroke-dasharray="0.018 2" stroke-dashoffset="0.018" style="animation: comet-2 7s cubic-bezier(0.5, 0, 0.3, 1) -3.9s infinite"/>
+      <path pathLength="1" d="M-40 94.3 C70.9 111 186.8 132.7 276.8 134.3" stroke="#ffa3d3" stroke-opacity="0.28" stroke-width="1.2" stroke-dasharray="0.16 2" stroke-dashoffset="0.16" style="animation: comet-0 7s cubic-bezier(0.5, 0, 0.3, 1) -6.1s infinite"/>
+      <path pathLength="1" d="M-40 94.3 C70.9 111 186.8 132.7 276.8 134.3" stroke="#ffa3d3" stroke-opacity="0.85" stroke-width="1.4" stroke-dasharray="0.07 2" stroke-dashoffset="0.07" style="animation: comet-1 7s cubic-bezier(0.5, 0, 0.3, 1) -6.1s infinite"/>
+      <path pathLength="1" d="M-40 94.3 C70.9 111 186.8 132.7 276.8 134.3" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6" stroke-dasharray="0.018 2" stroke-dashoffset="0.018" style="animation: comet-2 7s cubic-bezier(0.5, 0, 0.3, 1) -6.1s infinite"/>
+      </g>
+      <g mask="url(#mask-right)">
+      <path pathLength="1" d="M1320 43.7 C1210.6 85 1097.4 129.4 1007.4 133" stroke="#ffa3d3" stroke-opacity="0.28" stroke-width="1.2" stroke-dasharray="0.16 2" stroke-dashoffset="0.16" style="animation: comet-0 7s cubic-bezier(0.5, 0, 0.3, 1) -2.2s infinite"/>
+      <path pathLength="1" d="M1320 43.7 C1210.6 85 1097.4 129.4 1007.4 133" stroke="#ffa3d3" stroke-opacity="0.85" stroke-width="1.4" stroke-dasharray="0.07 2" stroke-dashoffset="0.07" style="animation: comet-1 7s cubic-bezier(0.5, 0, 0.3, 1) -2.2s infinite"/>
+      <path pathLength="1" d="M1320 43.7 C1210.6 85 1097.4 129.4 1007.4 133" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6" stroke-dasharray="0.018 2" stroke-dashoffset="0.018" style="animation: comet-2 7s cubic-bezier(0.5, 0, 0.3, 1) -2.2s infinite"/>
+      <path pathLength="1" d="M1320 230.6 C1209.9 204.8 1095.3 142 1005.3 138.3" stroke="#ffa3d3" stroke-opacity="0.28" stroke-width="1.2" stroke-dasharray="0.16 2" stroke-dashoffset="0.16" style="animation: comet-0 7s cubic-bezier(0.5, 0, 0.3, 1) -5.3s infinite"/>
+      <path pathLength="1" d="M1320 230.6 C1209.9 204.8 1095.3 142 1005.3 138.3" stroke="#ffa3d3" stroke-opacity="0.85" stroke-width="1.4" stroke-dasharray="0.07 2" stroke-dashoffset="0.07" style="animation: comet-1 7s cubic-bezier(0.5, 0, 0.3, 1) -5.3s infinite"/>
+      <path pathLength="1" d="M1320 230.6 C1209.9 204.8 1095.3 142 1005.3 138.3" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6" stroke-dasharray="0.018 2" stroke-dashoffset="0.018" style="animation: comet-2 7s cubic-bezier(0.5, 0, 0.3, 1) -5.3s infinite"/>
+      <path pathLength="1" d="M1320 140.5 C1207.7 138.7 1089 135.9 999 135.7" stroke="#ffa3d3" stroke-opacity="0.28" stroke-width="1.2" stroke-dasharray="0.16 2" stroke-dashoffset="0.16" style="animation: comet-0 7s cubic-bezier(0.5, 0, 0.3, 1) -1.1s infinite"/>
+      <path pathLength="1" d="M1320 140.5 C1207.7 138.7 1089 135.9 999 135.7" stroke="#ffa3d3" stroke-opacity="0.85" stroke-width="1.4" stroke-dasharray="0.07 2" stroke-dashoffset="0.07" style="animation: comet-1 7s cubic-bezier(0.5, 0, 0.3, 1) -1.1s infinite"/>
+      <path pathLength="1" d="M1320 140.5 C1207.7 138.7 1089 135.9 999 135.7" stroke="#ffffff" stroke-opacity="1" stroke-width="1.6" stroke-dasharray="0.018 2" stroke-dashoffset="0.018" style="animation: comet-2 7s cubic-bezier(0.5, 0, 0.3, 1) -1.1s infinite"/>
+      </g>
     </g>
 
     <!-- Text, drawn from the font outlines -->
