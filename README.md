@@ -4,6 +4,8 @@
 
 Most of them share one idea: **AI should not only be intelligent. It should be verifiable.**
 
+## Products
+
 | Product | What it does | Built with |
 |:--|:--|:--|
 | **[Ganimedes](https://github.com/Jegoba90/Ganimedes-Project)**<br>![release](https://img.shields.io/github/v/release/Jegoba90/Ganimedes-Project?style=flat-square&label=release) | Security gateway for AI agents. Audits, blocks and holds for approval what an agent does before it touches your systems. | `Go` |
@@ -13,3 +15,7 @@ Most of them share one idea: **AI should not only be intelligent. It should be v
 | **[Pasá la Posta](https://pasalapostarun.com/)**<br>![site](https://img.shields.io/website?url=https%3A%2F%2Fpasalapostarun.com&style=flat-square&label=site&up_message=live&down_message=down) | Race-kit pickup and delivery for runners in Buenos Aires. They skip the Expo line and the kit arrives at their door. | `TypeScript` `Astro` `Cloudflare Pages` `Apps Script` |
 
 <sub>Every status above is checked live, not typed by hand.</sub>
+
+## Contact
+
+**Email** [jegoba90@gmail.com](mailto:jegoba90@gmail.com) · **LinkedIn** [linkedin.com/in/jegoba90](https://www.linkedin.com/in/jegoba90/)
