@@ -12,3 +12,4 @@ Currently building:
 
 Also shipping:
 - 🛒 **El Cafetal Foods** — storefront with conversational commerce: no cart, no checkout — every order closes on WhatsApp · `Astro` `TypeScript` `Zod`
+- 🏃 **[Pasá la Posta](https://pasalapostarun.com/)** — race-kit pickup & delivery for runners in Buenos Aires · `TypeScript` `Supabase` `Cloudflare Workers` `Apps Script`
