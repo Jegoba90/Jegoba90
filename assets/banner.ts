@@ -33,79 +33,140 @@ const BUILDER = { text: " Builder", left: 655.78, baseline: 207.5, size: 20, spa
 
 type Run = typeof NAME;
 
-// CSS letter-spacing adds the space after every glyph, the last one included.
-const width = (font: Font, run: Run): number =>
-  font.getAdvanceWidth(run.text, run.size, { kerning: true }) + run.spacing * run.size * [...run.text].length;
-
 const pathData = (font: Font, run: Run): string =>
   font
     .getPath(run.text, run.left, run.baseline, run.size, { kerning: true, letterSpacing: run.spacing })
     .toPathData(2);
 
-const nameWidth = width(serif, NAME);
+// ---------------------------------------------------------------------------
+// Lines. Each side is a fan of fine fibres that start spread along the edge,
+// fade out towards it, and converge into a tight beam that points at the name.
+// A few steeper fibres come up from below and cross the fan, and now and then
+// a comet runs along one fibre into the name. The right side mirrors the left.
+// ---------------------------------------------------------------------------
 
-// Four lines per side: spread at the edge, parallel where they meet the name.
-const LEFT = [
-  "M0 50 C120 50 140 121 236 121 L280 121",
-  "M0 108 C120 108 140 131 236 131 L280 131",
-  "M0 206 C120 206 140 141 236 141 L280 141",
-  "M0 266 C120 266 140 151 236 151 L280 151",
+const FOCUS = { x: 282, y: 136 }; // where the left beam meets the name
+const round = (n: number): number => Math.round(n * 10) / 10;
+const mirror = (x: number): number => round(1280 - x);
+
+type Curve = [number, number, number, number, number, number, number, number];
+
+const d = ([x0, y0, x1, y1, x2, y2, x3, y3]: Curve, side: "left" | "right"): string => {
+  const x = side === "left" ? (v: number) => round(v) : mirror;
+  return `M${x(x0)} ${round(y0)} C${x(x1)} ${round(y1)} ${x(x2)} ${round(y2)} ${x(x3)} ${round(y3)}`;
+};
+
+// Mint at the top of the fan, green in the middle, lime at the bottom.
+const lerp = (a: number, b: number, t: number): number => a + (b - a) * t;
+const hex = (c: string): number[] => [1, 3, 5].map((i) => parseInt(c.slice(i, i + 2), 16));
+const mix = (stops: string[], t: number): string => {
+  const scaled = t * (stops.length - 1);
+  const i = Math.min(Math.floor(scaled), stops.length - 2);
+  const [a, b] = [hex(stops[i]), hex(stops[i + 1])];
+  return `#${a.map((v, k) => Math.round(lerp(v, b[k], scaled - i)).toString(16).padStart(2, "0")).join("")}`;
+};
+const FAN_COLORS = ["#2ee6b0", "#4be58a", "#8ee84f", "#b4e33a"];
+
+// 22 fibres, string-art style. Upper fibres drop towards the beam early and
+// then run level; lower ones hang low and rise late, so the fan twists
+// instead of radiating like a sunburst. Outer fibres stop short of the centre
+// ones, which gives the beam a pointed tip rather than a flat end.
+const FIBRES = 22;
+const fan: { curve: Curve; color: string }[] = Array.from({ length: FIBRES }, (_, i) => {
+  const t = i / (FIBRES - 1);
+  const u = t * 2 - 1;
+  const y0 = 150 + Math.sign(u) * Math.abs(u) ** 1.1 * 270;
+  const xEnd = FOCUS.x - Math.abs(u) * 22;
+  const yEnd = FOCUS.y + u * 7;
+  const pull = lerp(0.6, 0.12, t); // how early the fibre heads for the beam
+  const curve: Curve = [
+    -40, y0,
+    lerp(-40, xEnd, 0.35), lerp(y0, yEnd, pull),
+    xEnd - 90, lerp(yEnd, y0, 0.04),
+    xEnd, yEnd,
+  ];
+  return { curve, color: mix(FAN_COLORS, t) };
+});
+
+// A tight bundle of five steep fibres rising from below the card into the beam.
+const crossers: Curve[] = [178, 188, 198, 208, 218].map((x0, i) => [
+  x0, 332,
+  x0 + 12, 236 - i * 3,
+  FOCUS.x - 34, FOCUS.y + 18,
+  FOCUS.x, FOCUS.y + 5 - i * 2,
+]);
+
+// Comets: a white head, a pink body and a long faint tail, all sharing the
+// same leading edge. Positions are fractions of the fibre (pathLength = 1).
+const COMET = [
+  { len: 0.16, color: "#ffa3d3", opacity: 0.28, width: 1.2 },
+  { len: 0.07, color: "#ffa3d3", opacity: 0.85, width: 1.4 },
+  { len: 0.018, color: "#ffffff", opacity: 1, width: 1.6 },
 ];
-const RIGHT = [
-  "M1280 56 C1160 56 1140 121 1044 121 L1000 121",
-  "M1280 100 C1160 100 1140 131 1044 131 L1000 131",
-  "M1280 214 C1160 214 1140 141 1044 141 L1000 141",
-  "M1280 262 C1160 262 1140 151 1044 151 L1000 151",
+const CYCLE = 7; // seconds
+const TRAVEL = 0.55; // share of the cycle a comet spends on its fibre
+// [side, fibre index, delay]; delays are negative so comets are already in flight.
+const RIDES: ["left" | "right", number, number][] = [
+  ["left", 4, 0.4],
+  ["left", 12, 3.9],
+  ["left", 8, 6.1],
+  ["right", 6, 2.2],
+  ["right", 14, 5.3],
+  ["right", 10, 1.1],
 ];
 
-// Pulse delays are negative so the first frame already has pulses in flight.
-const DURATION = 3.6;
-const DELAYS_LEFT = [0, 1.8, 0.9, 2.7];
-const DELAYS_RIGHT = [0.45, 2.25, 1.35, 3.15];
+const keyframes = COMET.map(
+  (c, i) => `@keyframes comet-${i} {
+      0% { stroke-dashoffset: ${c.len}; }
+      ${round(TRAVEL * 100)}%, 100% { stroke-dashoffset: ${round((c.len - 1.2) * 1000) / 1000}; }
+    }`,
+).join("\n    ");
 
-const lines = (paths: string[], side: "left" | "right", attrs: string): string =>
-  paths.map((d) => `<path d="${d}" stroke="url(#fade-${side})" ${attrs}/>`).join("\n    ");
-
-const pulses = (paths: string[], side: "left" | "right", delays: number[], attrs: string): string =>
-  paths
-    .map(
-      (d, i) =>
-        `<path class="pulse" pathLength="1" style="animation-delay:-${delays[i]}s" d="${d}" stroke="url(#pulse-${side})" ${attrs}/>`,
+const comets = (s: "left" | "right"): string =>
+  RIDES.filter(([side]) => side === s)
+    .flatMap(([side, fibre, delay]) =>
+      COMET.map(
+        (c, i) =>
+          `<path pathLength="1" d="${d(fan[fibre].curve, side)}" stroke="${c.color}" stroke-opacity="${c.opacity}" stroke-width="${c.width}" stroke-dasharray="${c.len} 2" stroke-dashoffset="${c.len}" style="animation: comet-${i} ${CYCLE}s cubic-bezier(0.5, 0, 0.3, 1) -${delay}s infinite"/>`,
+      ),
     )
-    .join("\n    ");
+    .join("\n      ");
 
-const gradient = (id: string, x1: number, x2: number, stops: [number, string, number][]): string =>
-  `<linearGradient id="${id}" gradientUnits="userSpaceOnUse" x1="${x1}" y1="0" x2="${x2}" y2="0">
-      ${stops.map(([o, c, a]) => `<stop offset="${o}" stop-color="${c}" stop-opacity="${a}"/>`).join("\n      ")}
-    </linearGradient>`;
+const fibres = (side: "left" | "right"): string =>
+  [
+    ...fan.map(({ curve, color }) => `<path d="${d(curve, side)}" stroke="${color}"/>`),
+    ...crossers.map((curve) => `<path d="${d(curve, side)}" stroke="#c2e83a" stroke-width="1.1"/>`),
+  ].join("\n      ");
 
-const FADE: [number, string, number][] = [
-  [0, "#18e299", 0],
-  [0.45, "#18e299", 0.9],
-  [0.85, "#a6fb33", 1],
-  [1, "#a6fb33", 0],
-];
-const PULSE: [number, string, number][] = [
-  [0, "#c9f790", 0],
-  [0.3, "#7ee4b4", 1],
-  [0.85, "#e6ffc2", 1],
-  [1, "#e6ffc2", 0],
-];
+// Luminance masks: fibres are invisible at the edge and full strength at the beam.
+const fadeMask = (side: "left" | "right"): string => {
+  const [x1, x2, x] = side === "left" ? [0, FOCUS.x, 0] : [1280, mirror(FOCUS.x), mirror(FOCUS.x)];
+  return `<linearGradient id="fade-${side}" gradientUnits="userSpaceOnUse" x1="${x1}" y1="0" x2="${x2}" y2="0">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="0.4" stop-color="#fff" stop-opacity="0.3"/>
+      <stop offset="0.85" stop-color="#fff" stop-opacity="1"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0.35"/>
+    </linearGradient>
+    <mask id="mask-${side}" maskUnits="userSpaceOnUse" x="${x}" y="0" width="${FOCUS.x}" height="320">
+      <rect x="${x}" y="0" width="${FOCUS.x}" height="320" fill="url(#fade-${side})"/>
+    </mask>`;
+};
+
+const side = (s: "left" | "right"): string => `<g mask="url(#mask-${s})" fill="none">
+      <g filter="url(#glow)" opacity="0.25" stroke-width="2">
+      ${fibres(s)}
+      </g>
+      <g opacity="0.9" stroke-width="1">
+      ${fibres(s)}
+      </g>
+    </g>`;
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-labelledby="title">
   <title id="title">Jesús Antonio González, Founder &amp; Builder</title>
   <style>
-    .pulse {
-      stroke-dasharray: 0.14 1.2;
-      stroke-dashoffset: 0.14;
-      animation: flow ${DURATION}s cubic-bezier(0.45, 0, 0.25, 1) infinite;
-    }
-    @keyframes flow {
-      0% { stroke-dashoffset: 0.14; }
-      75%, 100% { stroke-dashoffset: -1; }
-    }
+    ${keyframes}
     @media (prefers-reduced-motion: reduce) {
-      .pulse { animation: none; visibility: hidden; }
+      .comets { display: none; }
     }
   </style>
   <defs>
@@ -114,12 +175,10 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" v
       <stop offset="0" stop-color="#18e299" stop-opacity="0.07"/>
       <stop offset="0.7" stop-color="#18e299" stop-opacity="0"/>
     </radialGradient>
-    ${gradient("fade-left", 0, 280, FADE)}
-    ${gradient("fade-right", 1280, 1000, FADE)}
-    ${gradient("pulse-left", 0, 280, PULSE)}
-    ${gradient("pulse-right", 1280, 1000, PULSE)}
-    <filter id="glow" x="-10%" y="-50%" width="120%" height="200%">
-      <feGaussianBlur stdDeviation="3"/>
+    ${fadeMask("left")}
+    ${fadeMask("right")}
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.5"/>
     </filter>
   </defs>
 
@@ -135,24 +194,16 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" v
       <line x1="0" y1="279.5" x2="1280" y2="279.5"/>
     </g>
 
-    <!-- Resting lines: a soft glow, then the sharp line -->
-    <g fill="none" opacity="0.3" filter="url(#glow)" stroke-width="2">
-    ${lines(LEFT, "left", "")}
-    ${lines(RIGHT, "right", "")}
-    </g>
-    <g fill="none" opacity="0.6">
-    ${lines(LEFT, "left", "")}
-    ${lines(RIGHT, "right", "")}
-    </g>
+    ${side("left")}
+    ${side("right")}
 
-    <!-- Pulses travelling from the edges into the name -->
-    <g fill="none" stroke-linecap="round" filter="url(#glow)" stroke-width="4" opacity="0.8">
-    ${pulses(LEFT, "left", DELAYS_LEFT, "")}
-    ${pulses(RIGHT, "right", DELAYS_RIGHT, "")}
-    </g>
-    <g fill="none" stroke-linecap="round" stroke-width="1.6">
-    ${pulses(LEFT, "left", DELAYS_LEFT, "")}
-    ${pulses(RIGHT, "right", DELAYS_RIGHT, "")}
+    <g class="comets" fill="none" stroke-linecap="round">
+      <g mask="url(#mask-left)">
+      ${comets("left")}
+      </g>
+      <g mask="url(#mask-right)">
+      ${comets("right")}
+      </g>
     </g>
 
     <!-- Text, drawn from the font outlines -->
