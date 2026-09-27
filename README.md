@@ -1,3 +1,5 @@
+<img src="assets/banner.svg" alt="Jesús Antonio González, Founder & Builder" width="100%">
+
 # I build products and ship them.
 
 Most of them share one idea: **AI should not only be intelligent. It should be verifiable.**
