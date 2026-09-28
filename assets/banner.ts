@@ -69,31 +69,33 @@ const FAN_COLORS = ["#2ee6b0", "#4be58a", "#8ee84f", "#b4e33a"];
 
 // 22 fibres, string-art style. Upper fibres drop towards the beam early and
 // then run level; lower ones hang low and rise late, so the fan twists
-// instead of radiating like a sunburst. Outer fibres stop short of the centre
-// ones, which gives the beam a pointed tip rather than a flat end.
+// instead of radiating like a sunburst. Every fibre ends at the same x and
+// the beam narrows to a few pixels there; the tip is drawn by the fade mask,
+// never by where each line stops, so no end is ever visible as a cut.
 const FIBRES = 22;
 const fan: { curve: Curve; color: string }[] = Array.from({ length: FIBRES }, (_, i) => {
   const t = i / (FIBRES - 1);
   const u = t * 2 - 1;
   const y0 = 150 + Math.sign(u) * Math.abs(u) ** 1.1 * 270;
-  const xEnd = FOCUS.x - Math.abs(u) * 22;
-  const yEnd = FOCUS.y + u * 7;
+  const yEnd = FOCUS.y + u * 2.5;
   const pull = lerp(0.6, 0.12, t); // how early the fibre heads for the beam
   const curve: Curve = [
     -40, y0,
-    lerp(-40, xEnd, 0.35), lerp(y0, yEnd, pull),
-    xEnd - 90, lerp(yEnd, y0, 0.04),
-    xEnd, yEnd,
+    lerp(-40, FOCUS.x, 0.35), lerp(y0, yEnd, pull),
+    FOCUS.x - 90, lerp(yEnd, y0, 0.04),
+    FOCUS.x, yEnd,
   ];
   return { curve, color: mix(FAN_COLORS, t) };
 });
 
-// A tight bundle of five steep fibres rising from below the card into the beam.
+// A tight bundle of five steep fibres rising from below the card. They level
+// out before the tip, so they join the beam from underneath instead of
+// crossing it.
 const crossers: Curve[] = [178, 188, 198, 208, 218].map((x0, i) => [
   x0, 332,
-  x0 + 12, 236 - i * 3,
-  FOCUS.x - 34, FOCUS.y + 18,
-  FOCUS.x, FOCUS.y + 5 - i * 2,
+  x0 + 14, 226 - i * 3,
+  FOCUS.x - 70, FOCUS.y + 2,
+  FOCUS.x, FOCUS.y + 2.5 - i * 1.25,
 ]);
 
 // Comets: a white head, a pink body and a long faint tail, all sharing the
@@ -138,14 +140,16 @@ const fibres = (side: "left" | "right"): string =>
     ...crossers.map((curve) => `<path d="${d(curve, side)}" stroke="#c2e83a" stroke-width="1.1"/>`),
   ].join("\n      ");
 
-// Luminance masks: fibres are invisible at the edge and full strength at the beam.
+// Luminance masks: fibres are invisible at the edge, full strength along the
+// beam, and fade to nothing at the tip, which is what shapes the point.
 const fadeMask = (side: "left" | "right"): string => {
   const [x1, x2, x] = side === "left" ? [0, FOCUS.x, 0] : [1280, mirror(FOCUS.x), mirror(FOCUS.x)];
   return `<linearGradient id="fade-${side}" gradientUnits="userSpaceOnUse" x1="${x1}" y1="0" x2="${x2}" y2="0">
       <stop offset="0" stop-color="#fff" stop-opacity="0"/>
       <stop offset="0.4" stop-color="#fff" stop-opacity="0.3"/>
-      <stop offset="0.85" stop-color="#fff" stop-opacity="1"/>
-      <stop offset="1" stop-color="#fff" stop-opacity="0.35"/>
+      <stop offset="0.72" stop-color="#fff" stop-opacity="1"/>
+      <stop offset="0.84" stop-color="#fff" stop-opacity="1"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
     </linearGradient>
     <mask id="mask-${side}" maskUnits="userSpaceOnUse" x="${x}" y="0" width="${FOCUS.x}" height="320">
       <rect x="${x}" y="0" width="${FOCUS.x}" height="320" fill="url(#fade-${side})"/>
