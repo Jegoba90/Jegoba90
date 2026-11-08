@@ -2,7 +2,7 @@
 
 # I build products and ship them.
 
-Most of them share one idea: **AI should not only be intelligent. It should be verifiable.**
+From online businesses to market analytics and AI tools, I turn real problems into products people can use.
 
 ## Products
 
